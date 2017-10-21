@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getCurrentWeather } from '../utils/api.js'
+import { getCurrentWeather, getFiveDayForecastEndpoint } from '../utils/api.js'
 
 class Form extends React.Component {
     constructor(props) {
@@ -9,13 +9,11 @@ class Form extends React.Component {
             cityname: ''
         }
         this.handleChange = this.handleChange.bind(this)
-        this.handleClick = this.handleClick.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
-    getDefaultProps() {
-        text: 'Get Weather'
-    }
-    handleClick() {
-        return getCurrentWeather(this.state.cityname)
+    handleSubmit() {
+        const weather = getCurrentWeather(this.state.cityname)
+        return weather
     }
     handleChange(e) {
         const value = e.target.value
@@ -27,7 +25,7 @@ class Form extends React.Component {
     }
     render() {
         return (
-            <div>
+            <form>
                 <input
                     type="text"
                     className="form-control"
@@ -35,18 +33,14 @@ class Form extends React.Component {
                     onChange={this.handleChange}
                     value={this.state.cityname}
                 />
-                <button
+                <input
+                    type="submit"
                     className='btn btn-success'
-                    onClick={this.handleClick}>
-                        {this.props.text}
-                </button>
-            </div>
+                    onSubmit={this.handleSubmit}
+                    value="Get Weather"/>
+            </form>
         )
     }
-}
-
-Form.propTypes = {
-    text: PropTypes.string.isRequired
 }
 
 export default Form
