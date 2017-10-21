@@ -12,7 +12,16 @@ const config = {
     module: {
         rules: [
             { test: /\.(js)$/, use: 'babel-loader' },
-            { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]}
+            { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]},
+            { test: /\.svg$/, use: [{
+                    loader: "babel-loader"
+                },
+                {
+                    loader: "react-svg-loader", options: {
+                        jsx: false // true outputs JSX tags
+                }
+            }]
+            }
         ]
     },
     devServer: {
