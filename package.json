@@ -4,6 +4,7 @@
     "description": "Type in a city and state and get a week's worth of weather predictions.",
     "main": "webpack.config.js",
     "dependencies": {
+        "axios": "^0.16.2",
         "babel-core": "^6.26.0",
         "babel-loader": "^7.1.2",
         "babel-preset-env": "^1.6.1",

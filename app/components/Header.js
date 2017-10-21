@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Button from './Button'
-import InputField from './InputField'
+import Form from './Form'
 
 class Header extends React.Component {
     getDefaultProps() {
@@ -14,9 +13,8 @@ class Header extends React.Component {
             <div className="header">
                 <h1 >{this.props.text}</h1>
                 <div className="header-container">
-                    <InputField/>
+                    <Form text="Get the weather"/>
                 </div>
-                <Button text={"Gimme the weather"}/>
             </div>
         )
     }
